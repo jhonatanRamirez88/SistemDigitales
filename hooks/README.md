@@ -16,7 +16,7 @@
 #  KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
-#porfin morros 2
+#porfin morros 2 soy un dios
 -->
 # Cordova Hooks
 
