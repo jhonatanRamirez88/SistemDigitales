@@ -1,21 +1,23 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ['firebase'])
 
 
 
-.controller('ChatsCtrl', function($scope, Chats) {
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
+.controller('ChatsCtrl', ['$scope', '$firebase', '$rootScope'
 
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
-  };
-})
+  function($scope, $firebase, $rootScope) {
+    var ref = new Firebase('https//rt-chat.firebaseio.com/');
+    var sync = $firebase(ref);
+    $scope.chats = sync.$asArray();
+
+    $scope.sendChat = function(chat) {
+      $scope.chats.$add({
+        user: 'Guest',
+        message: chat.message
+      });
+      chat.message = "";
+    }
+
+}])
 
 
 
