@@ -1,22 +1,16 @@
 <ion-view view-title="Chats">
-  <form-content>
-    <div class="list">
-      <a class="item item-avatar">
-        <img>
-        <h2>{{chat.user}}</h2>
-        <p>{{chat.message}}</p>
-      </a>
-      
-    </div>
-    <form>
-      <div class="list">
-        <div class="item item-input-insert">
-          <label class="item-input-wrapper">
-            <input type="text" placeholder="Mensaje" ng-nodel="chat.message"></input>
-          </label>
-          <button class="button button-positive ion ion-ios7-chatbubble" ng-click="sendChat(chat)"></button>
-        </div>
-      </div>
-    </form>
-  </form-content>
+  <ion-content>
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/chats/{{chat.id}}">
+        <img ng-src="{{chat.face}}">
+        <h2>{{chat.name}}</h2>
+        <p>{{chat.lastText}}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+
+        <ion-option-button class="button-assertive" ng-click="remove(chat)">
+          Delete
+        </ion-option-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
 </ion-view>
